@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bloom Restaurant</title>
+  <!-- point at the shared stylesheet in src (won't be processed by Vite but still readable) -->
+  <link rel="stylesheet" href="./src/styles/splash.css">
+  <style>
+    /* fallback / inline styles in case CSS fails to load */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, #df5db3, #2c2c2c);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .logo { width: 270px; margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+
+  <img src="./src/assets/logo.png" class="logo" alt="App Logo" />
+  <p>Starting application...</p>
+
+  <div class="loader"></div>
+
+</body>
+</html>
