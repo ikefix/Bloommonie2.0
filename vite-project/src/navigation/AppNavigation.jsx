@@ -5,6 +5,7 @@ import Login from "../pages/auth/login";
 import Register from "../pages/auth/Register";
 import Admin from "../pages/admin/Admin";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Inventory from "../pages/admin/Inventory";
 
 
 
@@ -22,6 +23,7 @@ export default function AppNavigation() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+      <Route path="/Inventory" element={<Inventory />} />
 
       {/* {isAuthenticated ? (
         <>

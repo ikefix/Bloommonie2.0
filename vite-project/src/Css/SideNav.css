@@ -1,0 +1,67 @@
+/* SIDEBAR */
+
+.side-nav{
+    width: 230px;
+    height: 100vh;
+    background: #2f3b52;
+    position: fixed;
+    left: 0;
+    top: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* LOGO SECTION */
+
+.logo-section{
+    background: #2c5c94;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-section img{
+    width: 25px;
+}
+
+.logo-section span{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* MENU */
+
+.side-menu{
+    margin-top: 10px;
+}
+
+.side-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu li{
+    width: 100%;
+}
+
+/* MENU LINKS */
+
+.side-menu a{
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: #d3d7df;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+/* HOVER */
+
+.side-menu a:hover{
+    background: #3b4865;
+    color: white;
+}
