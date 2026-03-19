@@ -1,6 +1,6 @@
 import "./login.css";
 import { FaEnvelope, FaLock, FaEyeSlash } from "react-icons/fa";
-import bloommonieGoogleImage from "../../assets/google-icon.png";
+import bloommonieGoogleImage from "../../assets/google-pics.png";
 import logoImage from "../../assets/logo.png";
 
 const Login = () => {

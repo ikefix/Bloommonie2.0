@@ -1,10 +1,17 @@
 /* CENTER PAGE */
 .login-section {
-  position: fixed;
-  inset: 0;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+}
+
+@media (max-height: 700px) {
+  .login-section {
+    align-items: flex-start;
+    padding-top: 40px;
+  }
 }
 
 /* CONTAINER */
@@ -12,6 +19,7 @@
   width: 350px;
   max-width: 90%;
   text-align: center;
+  /* margin-top: -80px; */
 }
 
 /* LOGO */
@@ -130,9 +138,9 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  cursor: pointer;
+  overflow: hidden; /* prevents spill */
 }
 .social img {
   width: 70px;
 }
+
