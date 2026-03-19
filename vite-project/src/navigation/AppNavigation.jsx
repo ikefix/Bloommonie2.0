@@ -1,9 +1,9 @@
-// import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import SplashPage from "../pages/splash/splash";
 import Login from "../pages/auth/login";
 import Register from "../pages/auth/Register";
 import Admin from "../pages/admin/Admin";
+import AIMode from "../pages/AIMode";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 
@@ -22,6 +22,7 @@ export default function AppNavigation() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+      <Route path="/ai-mode" element={<ProtectedRoute><AIMode /></ProtectedRoute>} />
 
       {/* {isAuthenticated ? (
         <>
