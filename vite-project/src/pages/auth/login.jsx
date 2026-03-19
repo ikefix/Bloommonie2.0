@@ -1,13 +1,14 @@
 import "./login.css";
 import { FaEnvelope, FaLock, FaEyeSlash } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
+import bloommonieGoogleImage from "../../assets/google-icon.png";
+import logoImage from "../../assets/logo.png";
 
 const Login = () => {
   return (
     <div className="login-section">
       <div className="login-container">
 
-        <img src="/logo.png" alt="logo" className="logo" />
+        <img src={logoImage} alt="logo" className="logo" />
 
         <h2>Login</h2>
 
@@ -49,7 +50,7 @@ const Login = () => {
           {/* SOCIAL */}
           <div className="socials">
             <div className="social">
-              <FaGoogle />
+              <img src={bloommonieGoogleImage} alt="Google" />
             </div>
           </div>
         </form>

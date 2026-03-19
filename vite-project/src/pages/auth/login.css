@@ -16,7 +16,7 @@
 
 /* LOGO */
 .logo {
-  width: 90px;
+  width: 180px;
   margin-bottom: 15px;
 }
 
@@ -116,11 +116,11 @@ h2 {
 }
 
 /* SOCIALS */
-.socials {
+ .socials {
   display: flex;
   justify-content: center;
   gap: 15px;
-}
+} 
 
 .social {
   width: 45px;
@@ -132,4 +132,7 @@ h2 {
   justify-content: center;
   font-weight: bold;
   cursor: pointer;
+}
+.social img {
+  width: 70px;
 }
