@@ -5,6 +5,7 @@ import Register from "../pages/auth/Register";
 import Admin from "../pages/admin/Admin";
 import AIMode from "../pages/AIMode";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Inventory from "../pages/admin/Inventory";
 
 
 
@@ -23,6 +24,7 @@ export default function AppNavigation() {
       <Route path="/register" element={<Register />} />
       <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
       <Route path="/ai-mode" element={<ProtectedRoute><AIMode /></ProtectedRoute>} />
+      <Route path="/Inventory" element={<Inventory />} />
 
       {/* {isAuthenticated ? (
         <>
