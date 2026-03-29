@@ -10,9 +10,12 @@
 }
 
 .ai-mode-header {
-  text-align: center;
-  margin-bottom: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  padding: 30px 20px 20px;
+  text-align: center;
+  border-radius: 12px 12px 0 0;
+  margin-top: 0;
 }
 
 .ai-mode-header h1 {
@@ -30,6 +33,51 @@
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr;
+}
+
+/* System Info Card */
+.system-info-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-left: 4px solid #00BCD4;
+}
+
+.system-info-card h3 {
+  margin: 0 0 15px 0;
+  color: #00BCD4;
+}
+
+.system-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.system-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #00BCD4;
+}
+
+.system-label {
+  font-weight: 500;
+  color: #555;
+  font-size: 14px;
+}
+
+.system-value {
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
 }
 
 /* Card Styles */
@@ -86,6 +134,50 @@
 .toggle-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Window Controls for Electron */
+.window-controls {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 8px;
+}
+
+.window-control {
+  width: 40px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.window-control:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.window-control.minimize:hover {
+  background: #FFC107;
+  color: white;
+}
+
+.window-control.maximize:hover {
+  background: #4CAF50;
+  color: white;
+}
+
+.window-control.close:hover {
+  background: #F44336;
+  color: white;
 }
 
 /* Voice Controls */

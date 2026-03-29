@@ -1,10 +1,13 @@
 // API Configuration for Bloommonie2.0 AI Mode System
 // This file contains all API endpoints and base URLs for the application
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const FRONTEND_BASE = import.meta.env.VITE_FRONTEND_BASE || 'http://localhost:5173';
+
 const API_CONFIG = {
   // Base URLs
-  BASE_URL: 'http://localhost:5000/api',
-  FRONTEND_BASE: 'http://localhost:5173',
+  BASE_URL: API_BASE_URL,
+  FRONTEND_BASE: FRONTEND_BASE,
   
   // Authentication Routes
   AUTH: {

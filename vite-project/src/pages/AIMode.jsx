@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useAiModeStore } from '../stores/aiModeStore';
-import { speechManager } from '../utils/speechUtils';
+import { useNavigate } from 'react-router-dom';
+import { useAiModeStore } from '../../stores/aiModeStore';
+import { useElectronAiModeStore } from '../../stores/electronAiModeStore';
+import { speechManager } from '../../utils/speechUtils';
 import './AIMode.css';
 
 const AIMode = () => {
+  const navigate = useNavigate();
+  
+  // Use the main aiModeStore for core functionality
   const {
     isAiModeActive,
     isListening,
@@ -23,8 +28,18 @@ const AIMode = () => {
     clearCommandHistory,
     clearSearchResults,
     addProductToStore,
-    removeProductToStore
+    removeProductToStore,
+    navigateToReports,
+    navigateToStaff,
+    navigateToDashboard,
+    navigateToPos
   } = useAiModeStore();
+
+  // Use electronAiModeStore for Electron-specific features
+  const {
+    isElectron,
+    systemInfo
+  } = useElectronAiModeStore();
 
   const [showCommandHistory, setShowCommandHistory] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -36,7 +51,14 @@ const AIMode = () => {
     if (speechManager.isSupported.synthesis) {
       speechManager.getVoices();
     }
-  }, []);
+    
+    // Initialize Electron features if available (using main store)
+    if (isElectron) {
+      // The initializeElectron method is now in the main store
+      // It will be called when AI mode is toggled
+      console.log('Electron environment detected');
+    }
+  }, [isElectron]);
 
   const handleToggleAiMode = () => {
     toggleAiMode();
@@ -142,13 +164,57 @@ const AIMode = () => {
 
   return (
     <div className="ai-mode-container">
+      {/* Custom Window Controls for Electron */}
+      {isElectron && (
+        <div className="window-controls">
+          <button className="window-control minimize" onClick={() => window.electron.aiMode.minimizeApp()}>
+            &#8212;
+          </button>
+          <button className="window-control maximize" onClick={() => window.electron.aiMode.maximizeApp()}>
+            &#9633;
+          </button>
+          <button className="window-control close" onClick={() => window.electron.aiMode.closeApp()}>
+            &#10005;
+          </button>
+        </div>
+      )}
+
       <header className="ai-mode-header">
         <h1>🤖 AI Mode</h1>
         <p>Control your business with voice commands</p>
       </header>
 
       <div className="ai-mode-content">
-        {/* AI Mode Toggle */}
+        {/* System Info Card - Electron Only */}
+      {isElectron && systemInfo && (
+        <div className="system-info-card">
+          <h3>🖥️ System Information</h3>
+          <div className="system-details">
+            <div className="system-item">
+              <span className="system-label">Platform:</span>
+              <span className="system-value">{systemInfo.platform}</span>
+            </div>
+            <div className="system-item">
+              <span className="system-label">Electron Version:</span>
+              <span className="system-value">{systemInfo.electronVersion}</span>
+            </div>
+            <div className="system-item">
+              <span className="system-label">Node Version:</span>
+              <span className="system-value">{systemInfo.nodeVersion}</span>
+            </div>
+            <div className="system-item">
+              <span className="system-label">Chrome Version:</span>
+              <span className="system-value">{systemInfo.chromeVersion}</span>
+            </div>
+            <div className="system-item">
+              <span className="system-label">App Version:</span>
+              <span className="system-value">{systemInfo.appVersion}</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* AI Mode Toggle */}
         <div className="ai-status-card">
           <div className="status-header">
             <h2>AI Mode Status</h2>
