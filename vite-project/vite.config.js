@@ -12,9 +12,9 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      // forward /api calls to the express backend running on port 4000
+      // forward /api calls to the express backend running on port 5000
       '/api': {
-        target: 'http://localhost:4000',
+        target: 'http://localhost:5000',
         changeOrigin: true,
         secure: false,
       },
