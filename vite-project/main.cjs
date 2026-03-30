@@ -18,10 +18,95 @@ const createWindow = () => {
     },
   });
 
-  mainWindow.loadURL("http://localhost:5173");
+  // Try common Vite ports in order - this will find the correct port automatically
+  const possiblePorts = [5173, 5174, 5175, 3000];
+  
+  const tryLoadUrl = async (ports, index = 0) => {
+    if (index >= ports.length) {
+      console.log('All ports failed, showing error page');
+      // Show error page if all ports fail
+      mainWindow.webContents.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Development Server Not Running</title>
+          <style>
+            body { 
+              font-family: Arial, sans-serif; 
+              display: flex; 
+              justify-content: center; 
+              align-items: center; 
+              height: 100vh; 
+              margin: 0; 
+              background: #f5f5f5;
+            }
+            .container { 
+              text-align: center; 
+              background: white; 
+              padding: 40px; 
+              border-radius: 8px; 
+              box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            h1 { color: #e74c3c; }
+            .code { 
+              background: #f8f9fa; 
+              padding: 15px; 
+              border-radius: 4px; 
+              font-family: monospace; 
+              margin: 20px 0;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <h1>Development Server Not Running</h1>
+            <p>Please start the development server first:</p>
+            <div class="code">npm run dev</div>
+            <p>Then restart the Electron app:</p>
+            <div class="code">npm run electron</div>
+          </div>
+        </body>
+        </html>
+      `)}`);
+      return;
+    }
+    
+    const currentUrl = `http://localhost:${ports[index]}`;
+    console.log('Attempting to load:', currentUrl);
+    
+    try {
+      await mainWindow.loadURL(currentUrl);
+      console.log('Successfully loaded dev server at:', currentUrl);
+    } catch (error) {
+      console.log('Failed to load', currentUrl, ':', error.message);
+      // Try next port
+      tryLoadUrl(ports, index + 1);
+    }
+  };
+  
+  // Start trying ports
+  tryLoadUrl(possiblePorts);
 
-  // open dev tools to debug any errors
+  // Temporarily disable dev tools to see console errors clearly
   mainWindow.webContents.openDevTools();
+
+  // Add debugging for page load events
+  mainWindow.webContents.on('did-finish-load', () => {
+    console.log('Page finished loading');
+  });
+
+  mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription) => {
+    console.log('Page failed to load:', errorCode, errorDescription);
+  });
+
+  mainWindow.webContents.on('dom-ready', () => {
+    console.log('DOM is ready');
+  });
+
+  // Log all console messages from the renderer process
+  mainWindow.webContents.on('console-message', (event, level, message, line, sourceId) => {
+    console.log(`[Renderer Console] ${message}`);
+  });
 
   mainWindow.on("closed", () => {
     mainWindow = null;
