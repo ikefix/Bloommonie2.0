@@ -1,0 +1,474 @@
+/* CONTAINER */
+
+.box-axisarea{
+
+    background-color: rgb(231, 231, 243);
+    min-height: 100vh;
+     padding: 20px;
+    margin-left: 10px; 
+}
+
+.box-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 10px; 
+ margin-left: 225px;
+  
+
+  
+  
+}
+.box-section > div {
+  display: flex;
+align-content: center;
+ 
+}
+
+/* CARD BASE */
+.sales-box-area,
+.wallet-box-area,
+.data-box-area,
+.bills-box-area {
+  background: #f9fafb;;
+  border: 1px solid #e2e5ec;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+/* INNER CARD */
+.box-sales,
+.box-wallet,
+.box-data,
+.box-bills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+/* ICON */
+.card-icon {
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* TEXT */
+.box-sales h3,
+.box-wallet h3,
+.box-data h3,
+.box-bills h3 {
+  font-size: 22px;
+  font-weight: 550;
+  margin: 0;
+}
+.box-sales h3{
+  color: #2e7d32;
+}
+.box-wallet h3{
+  color: black;
+}
+.box-data h3{
+  color: black;
+}
+.box-bills h3{
+  color: black;
+}
+
+
+
+.box-sales h1,
+.box-wallet h1,
+.box-data h1,
+.box-bills h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+/* ACTION TEXT */
+.box-sales h3:last-child,
+.box-wallet h3:last-child,
+.box-data h3:last-child,
+.box-bills h3:last-child {
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== COLORS PER CARD ===== */
+
+/* SALES */
+
+.sales-box-area .card-icon {
+  background: #4caf50;
+  color: #fff;
+}
+.sales-box-area h1 {
+  color: #2e7d32;
+}
+
+/* WALLET */
+
+.wallet-box-area .card-icon {
+  background: #1e3a8a;
+  color: #fff;
+}
+.wallet-box-area h1 {
+  color: #1e3a8a;
+}
+
+/* DATA */
+
+.data-box-area .card-icon {
+  background: #f59e0b;
+  color: #fff;
+}
+.data-box-area h1 {
+  font-size: 14px;
+  color: #555;
+}
+
+/* BILLS */
+
+.bills-box-area .card-icon {
+  background: #7c3aed;
+  color: #fff;
+}
+.bills-box-area h1 {
+  font-size: 14px;
+  color: #666;
+}
+
+/* BUTTON BASE */
+.box-wallet button,
+.box-data button {
+  margin-top: auto; /* pushes to bottom */
+  width: 100%;
+  padding: 8px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* SPECIFIC COLORS */
+.box-wallet button {
+  background: #1f3a63; /* dark blue */
+}
+
+.box-data button {
+  background: #f4a340; /* orange */
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  min-width: 50px; /* prevents shrinking */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-circle svg {
+  font-size: 22px; /* controls icon size */
+  color: #fff;
+}
+
+.icon-circle.green {
+  background: #4caf50;
+}
+
+.icon-circle.blue {
+  background: #1e3a8a;
+}
+
+.icon-circle.orange {
+  background: #f59e0b;
+}
+
+.icon-circle.purple {
+  background: #7c3aed;
+}
+
+.box-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.text span {
+  font-size: 15px;
+  color: #9ca3af; /* faint grey */
+  font-weight: 420;
+}
+
+.link  {
+  font-size: 17px;
+  color:#1e3a8a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link-bills  {
+  font-size: 17px;
+  color:#7c3aed;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.firstsection {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Inventory bigger */
+  gap: 20px;
+  margin-top: 10px; /* controls closeness to top cards */
+}
+
+.inventory-status {
+  margin-left: 220px;
+  padding: 6px;
+  /* margin: 0; */
+} 
+
+
+
+/* CARD */
+.inventory-card {
+
+  border-radius: 10px;
+  padding: 16px;
+  width: 50%;
+}
+
+/* HEADER */
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: -265px;
+
+}
+
+
+.inventory-header h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+ .inventory-header button {
+    background: #f4f4f7;
+    border: 1px solid #d8dce5;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    width: 100px;
+    margin-bottom: 12px;
+    width: 148px;
+}
+
+/* STATS GRID */
+.inventory-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 15px;
+
+}
+
+/* EACH BLOCK */
+.stat {
+  padding: 10px 15px;
+}
+
+.border-left {
+  border-left: 1px solid #e5e7eb;
+}
+
+/* TEXT */
+.stat p {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.stat h3 {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+/* COLORS */
+.green {
+  color: #2e7d32;
+}
+
+.red {
+  color: #dc2626;
+}
+
+.sub {
+  font-size: 12px;
+}
+
+/* .inventory-wallet */
+
+/* .wallet-services{
+  display: flex;
+  width: 50%;
+} */
+
+
+.secondaxis hr{
+  width: 100%;
+  color: #e5e7eb;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 12px 0;
+
+
+}
+.wallet-card {
+  background:#f9fafb;
+  border-radius: 10px;
+  padding: 18px 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e3e6ee;
+  min-height: 215px;
+}
+
+.wallet-services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.wallet-services-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #173a72;
+  margin: 0;
+}
+
+.wallet-services-header button {
+  background: #f4f4f7;
+  border: 1px solid #d8dce5;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+.wallet-services-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  gap: 20px;
+}
+
+.wallet-box-left,
+.wallet-box-right {
+  flex: 1;
+}
+
+.wallet-box-left p,
+.wallet-box-right p {
+  font-size: 15px;
+  color: #7d7d7d;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.wallet-box-left h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #163b7a;
+  margin: 0;
+}
+
+.wallet-box-right h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #11833b;
+  margin: 0;
+}
+
+.wallet-box-right h3 span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #11833b;
+}
+
+.wallet-service-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.service-box {
+  width: 36px;
+  height: 28px;
+  border-radius: 4px;
+}
+
+.green-box {
+  background: #1c8b3c;
+}
+
+.yellow-box {
+  background: #d4a813;
+}
+
+.red-box {
+  background: #c31515;
+}
+
+.blue-box {
+  background: #1564c0;
+}
+
+.secondaxis {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+  align-items: stretch;
+}
+
+
+
+.inventory-status,
+.inventory-wallet {
+  flex: 1;
+  background-color:#f9fafb ;
+}
+
+.inventory-card,
+.wallet-card {
+  height: 100%;
+}
+
+.inventory-card {
+  min-height: 215px;
+  /* padding: 18px 16px; */
+}
+
+
+.inventory-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+  gap: 16px;
+}

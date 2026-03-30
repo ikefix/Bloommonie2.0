@@ -1,6 +1,10 @@
 import React from 'react';
 import { useAuthStore } from '../../../stores/authStore';
 import { useNavigate } from 'react-router-dom';
+import SideNav from '../../components/sideNav';
+import SearchBar from '../../components/SearchBar';
+import Box from '../../components/Box';
+// import InventoryStatus from '../../components/InventoryStatus';
 
 export default function Admin() {
   const { user, logout, isAuthenticated } = useAuthStore();
@@ -22,6 +26,14 @@ export default function Admin() {
   }
 
   return (
+<<<<<<< HEAD:vite-project/src/pages/admin/Dashboard.jsx
+        <>
+            <SideNav />
+            <SearchBar />
+            <Box />
+            {/* <InventoryStatus /> */}
+        </>
+=======
     <div style={{ padding: 24 }}>
       <h1>Admin Dashboard</h1>
       <p>Signed in as: {user?.email}</p>
@@ -45,5 +57,7 @@ export default function Admin() {
         <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
+>>>>>>> e8bbc507096c7552c908a45da85ab862a6a1000a:vite-project/src/pages/admin/Admin.jsx
   );
 }
+
