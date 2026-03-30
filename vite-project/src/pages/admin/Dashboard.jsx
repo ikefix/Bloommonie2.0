@@ -6,7 +6,7 @@ import SearchBar from '../../components/SearchBar';
 import Box from '../../components/Box';
 // import InventoryStatus from '../../components/InventoryStatus';
 
-export default function Admin() {
+export default function UserDashboard() {
   const { user, logout, isAuthenticated } = useAuthStore();
   const navigate = useNavigate();
 
@@ -26,38 +26,11 @@ export default function Admin() {
   }
 
   return (
-<<<<<<< HEAD:vite-project/src/pages/admin/Dashboard.jsx
         <>
             <SideNav />
             <SearchBar />
             <Box />
-            {/* <InventoryStatus /> */}
         </>
-=======
-    <div style={{ padding: 24 }}>
-      <h1>Admin Dashboard</h1>
-      <p>Signed in as: {user?.email}</p>
-      
-      <div style={{ marginTop: 20 }}>
-        <button 
-          onClick={() => navigate('/ai-mode')}
-          style={{
-            marginRight: 10,
-            padding: '10px 20px',
-            backgroundColor: '#6C63FF',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer'
-          }}
-        >
-          🤖 AI Mode
-        </button>
-        
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-    </div>
->>>>>>> e8bbc507096c7552c908a45da85ab862a6a1000a:vite-project/src/pages/admin/Admin.jsx
   );
 }
 
