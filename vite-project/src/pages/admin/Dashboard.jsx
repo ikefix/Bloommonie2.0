@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import SideNav from '../../components/sideNav';
+import SearchBar from '../../components/SearchBar';
+import Box from '../../components/Box';
+// import InventoryStatus from '../../components/InventoryStatus';
 
 export default function Admin() {
   const { user, logout } = useContext(AuthContext);
@@ -12,10 +16,12 @@ export default function Admin() {
   };
 
   return (
-    <div style={{ padding: 24 }}>
-      <h1>Admin Dashboard</h1>
-      <p>Signed in as: {user?.email}</p>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+        <>
+            <SideNav />
+            <SearchBar />
+            <Box />
+            {/* <InventoryStatus /> */}
+        </>
   );
 }
+
