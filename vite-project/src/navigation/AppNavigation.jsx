@@ -2,19 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import SplashPage from "../pages/splash/splash";
 import Login from "../pages/auth/login";
 import Register from "../pages/auth/Register";
-<<<<<<< HEAD
-import Admin from "../pages/admin/Dashboard";
-=======
+import UserDashboard from "../pages/admin/Dashboard";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ResetPassword from "../pages/auth/ResetPassword";
 import VerifyEmail from "../pages/auth/VerifyEmail";
 import GoogleCallback from "../pages/auth/GoogleCallback";
-import Admin from "../pages/admin/Admin";
 import AIMode from "../pages/AIMode";
->>>>>>> e8bbc507096c7552c908a45da85ab862a6a1000a
 import ProtectedRoute from "../components/ProtectedRoute";
 import Inventory from "../pages/admin/Inventory";
-import ForgetPassword from "../pages/auth/ForgetPassword";
 
 
 export default function AppNavigation() {
@@ -27,33 +22,17 @@ export default function AppNavigation() {
       {/* Authentication Routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-<<<<<<< HEAD
       {/* <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} /> */}
-      <Route path="/admin" element={<Admin />} />
-      <Route path="/Inventory" element={<Inventory />} />
-      <Route path="/forgetpassword" element={<ForgetPassword />} />
-      
+      <Route path="/dashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
+      <Route path="/Inventory" element={<ProtectedRoute><Inventory /></ProtectedRoute>} />
 
-      {/* {isAuthenticated ? (
-        <>
-          <Route path="/Home" element={<Home />} />
-        </>
-      ) : (
-        <>
-            <Route path="/login" element={<Login />} />
-        </>
-      )} */}
-=======
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/verify-email" element={<VerifyEmail />} />
       <Route path="/auth/google/callback" element={<GoogleCallback />} />
       
       {/* Protected Routes */}
-      <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
       <Route path="/ai-mode" element={<ProtectedRoute><AIMode /></ProtectedRoute>} />
-      <Route path="/Inventory" element={<ProtectedRoute><Inventory /></ProtectedRoute>} />
->>>>>>> e8bbc507096c7552c908a45da85ab862a6a1000a
     </Routes>
   );
 }

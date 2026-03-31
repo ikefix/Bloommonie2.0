@@ -23,7 +23,7 @@ const VerifyEmail = () => {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/admin');
+      navigate('/dashboard');
     }
   }, [isAuthenticated, navigate]);
 

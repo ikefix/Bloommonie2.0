@@ -60,12 +60,17 @@ const AIMode = () => {
     }
   }, [isElectron]);
 
-  const handleToggleAiMode = () => {
-    toggleAiMode();
-    if (!isAiModeActive) {
-      speak('AI Mode activated. I\'m ready to help you manage your business.');
+  const handleToggleAiMode = async (e) => {
+    if (e?.preventDefault) e.preventDefault();
+    if (e?.stopPropagation) e.stopPropagation();
+
+    const nextIsActive = !isAiModeActive;
+    await toggleAiMode();
+
+    if (nextIsActive) {
+      await speak("AI Mode activated. I'm ready to help you manage your business.");
     } else {
-      speak('AI Mode deactivated.');
+      await speak('AI Mode deactivated.');
     }
   };
 

@@ -40,7 +40,7 @@ const Register = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/admin');
+      navigate('/dashboard');
     }
   }, [isAuthenticated, navigate]);
 

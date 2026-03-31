@@ -26,7 +26,7 @@ const GoogleCallback = () => {
     if (isAuthenticated && callbackStatus === 'loading') {
       setCallbackStatus('redirecting');
       setTimeout(() => {
-        navigate('/admin');
+        navigate('/dashboard');
       }, 100);
     }
   }, [isAuthenticated, navigate, callbackStatus]);
@@ -71,7 +71,7 @@ const GoogleCallback = () => {
       
       // Redirect to admin after short delay
       setTimeout(() => {
-        navigate('/admin');
+        navigate('/dashboard');
       }, 2000);
       
     } catch (err) {
@@ -102,7 +102,7 @@ const GoogleCallback = () => {
         
         // Redirect to admin after short delay
         setTimeout(() => {
-          navigate('/admin');
+          navigate('/dashboard');
         }, 2000);
       } else {
         setCallbackStatus('error');
@@ -116,7 +116,7 @@ const GoogleCallback = () => {
   };
 
   const handleContinue = () => {
-    navigate('/admin');
+    navigate('/dashboard');
   };
 
   const handleRetry = () => {
