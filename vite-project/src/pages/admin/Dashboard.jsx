@@ -25,15 +25,13 @@ export default function Admin() {
     );
   }
 
-  return (
-<<<<<<< HEAD:vite-project/src/pages/admin/Dashboard.jsx
-        <>
-            <SideNav />
-            <SearchBar />
-            <Box />
-            {/* <InventoryStatus /> */}
-        </>
-=======
+return (
+  <>
+    <SideNav />
+    <SearchBar />
+    <Box />
+    {/* <InventoryStatus /> */}
+
     <div style={{ padding: 24 }}>
       <h1>Admin Dashboard</h1>
       <p>Signed in as: {user?.email}</p>
@@ -57,7 +55,7 @@ export default function Admin() {
         <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
->>>>>>> e8bbc507096c7552c908a45da85ab862a6a1000a:vite-project/src/pages/admin/Admin.jsx
-  );
+  </>
+);
 }
 
