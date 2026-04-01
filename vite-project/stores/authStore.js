@@ -10,6 +10,7 @@ export const useAuthStore = create((set, get) => ({
   token: localStorage.getItem('token') || null,
   isAuthenticated: false,
   isLoading: false,
+  isInitializing: true, // Track initialization state
   error: null,
   
   // Registration form state
@@ -53,7 +54,8 @@ export const useAuthStore = create((set, get) => ({
   setAuthState: (authData) => set({
     token: authData.token,
     isAuthenticated: authData.isAuthenticated || true,
-    user: authData.user
+    user: authData.user,
+    isInitializing: false
   }),
 
   // Registration Actions
@@ -313,6 +315,7 @@ export const useAuthStore = create((set, get) => ({
       token: null,
       isAuthenticated: false,
       isLoading: false,
+      isInitializing: false,
       error: null,
       registrationData: {
         name: '',
@@ -354,14 +357,24 @@ export const useAuthStore = create((set, get) => ({
         set({
           token,
           user: parsedUser,
-          isAuthenticated: true
+          isAuthenticated: true,
+          isInitializing: false
         });
       } catch (error) {
         console.error('Failed to parse user data:', error);
         // Clear invalid data
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        set({
+          token: null,
+          user: null,
+          isAuthenticated: false,
+          isInitializing: false
+        });
       }
+    } else {
+      // No token or user found, initialization complete
+      set({ isInitializing: false });
     }
   },
 

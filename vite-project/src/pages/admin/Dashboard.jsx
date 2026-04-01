@@ -6,7 +6,7 @@ import SearchBar from '../../components/SearchBar';
 import Box from '../../components/Box';
 // import InventoryStatus from '../../components/InventoryStatus';
 
-export default function Admin() {
+export default function UserDashboard() {
   const { user, logout, isAuthenticated } = useAuthStore();
   const navigate = useNavigate();
 
@@ -25,6 +25,7 @@ export default function Admin() {
     );
   }
 
+<<<<<<< HEAD
 return (
   <>
     <SideNav />
@@ -57,5 +58,14 @@ return (
     </div>
   </>
 );
+=======
+  return (
+        <>
+            <SideNav />
+            <SearchBar />
+            <Box />
+        </>
+  );
+>>>>>>> 8c9f6a90eedd5fcc64745bf5e2e6e13c08399f2f
 }
 

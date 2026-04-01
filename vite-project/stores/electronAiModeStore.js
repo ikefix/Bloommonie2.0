@@ -237,21 +237,24 @@ export const useElectronAiModeStore = create((set, get) => ({
   
   // Enhanced speak method with Electron support
   speak: async (text, options = {}) => {
+    const safeText = typeof text === 'string' ? text : (text == null ? '' : String(text));
+    if (!safeText) return;
+
     if (get().isElectron) {
       try {
-        const result = await window.electron.aiMode.speak(text, options);
+        const result = await window.electron.aiMode.speak(safeText, options);
         if (!result.success) {
           console.error('Electron TTS failed:', result.message);
           // Fallback to web TTS
-          get().webSpeak(text, options);
+          get().webSpeak(safeText, options);
         }
       } catch (error) {
         console.error('Electron TTS error:', error);
         // Fallback to web TTS
-        get().webSpeak(text, options);
+        get().webSpeak(safeText, options);
       }
     } else {
-      get().webSpeak(text, options);
+      get().webSpeak(safeText, options);
     }
   },
   
