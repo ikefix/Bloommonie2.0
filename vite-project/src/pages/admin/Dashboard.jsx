@@ -25,13 +25,12 @@ export default function UserDashboard() {
     );
   }
 
-<<<<<<< HEAD
 return (
   <>
     <SideNav />
     <SearchBar />
     <Box />
-    {/* <InventoryStatus /> */}
+    {/* <InventoryStatus />
 
     <div style={{ padding: 24 }}>
       <h1>Admin Dashboard</h1>
@@ -55,10 +54,9 @@ return (
         
         <button onClick={handleLogout}>Logout</button>
       </div>
-    </div>
+    </div> */}
   </>
 );
-=======
   return (
         <>
             <SideNav />
@@ -66,6 +64,5 @@ return (
             <Box />
         </>
   );
->>>>>>> 8c9f6a90eedd5fcc64745bf5e2e6e13c08399f2f
 }
 
