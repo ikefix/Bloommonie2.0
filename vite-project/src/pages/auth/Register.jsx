@@ -89,7 +89,7 @@ const Register = () => {
       if (result.success) {
         // Registration successful, show success message
         alert(result.message || 'Registration successful! Please check your email for verification.');
-        navigate('/login');
+        navigate('/verify-email');
       }
     } catch (err) {
       console.error('Registration error:', err);

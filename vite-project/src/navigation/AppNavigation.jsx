@@ -12,6 +12,7 @@ import GoogleCallback from "../pages/auth/GoogleCallback";
 import AIMode from "../pages/AIMode";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Inventory from "../pages/admin/Inventory";
+import SuccessPage from "../pages/auth/successPage";
 
 
 export default function AppNavigation() {
@@ -43,8 +44,9 @@ export default function AppNavigation() {
 
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/verify-email" element={<VerifyEmail />} />
+      <Route path="/verify-email/:token/" element={<VerifyEmail />} />
       <Route path="/auth/google/callback" element={<GoogleCallback />} />
+      <Route path="/success-register" element={<SuccessPage />} />
       
       {/* Protected Routes */}
       <Route path="/ai-mode" element={<ProtectedRoute><AIMode /></ProtectedRoute>} />
