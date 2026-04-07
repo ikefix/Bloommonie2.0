@@ -30,6 +30,38 @@ export default function UserDashboard() {
     );
   }
 
+return (
+  <>
+    <SideNav />
+    <SearchBar />
+    <Box />
+    {/* <InventoryStatus />
+
+    <div style={{ padding: 24 }}>
+      <h1>Admin Dashboard</h1>
+      <p>Signed in as: {user?.email}</p>
+      
+      <div style={{ marginTop: 20 }}>
+        <button 
+          onClick={() => navigate('/ai-mode')}
+          style={{
+            marginRight: 10,
+            padding: '10px 20px',
+            backgroundColor: '#6C63FF',
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer'
+          }}
+        >
+          🤖 AI Mode
+        </button>
+        
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    </div> */}
+  </>
+);
   return (
         <>
             <SideNav />
