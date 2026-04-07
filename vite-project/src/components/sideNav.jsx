@@ -8,29 +8,29 @@ const SideNav = () => {
     const { user, logout, isAuthenticated } = useAuthStore();
     const navigate = useNavigate();
 
-      const handleLogout = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    const handleLogout = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
 
-    if (confirm("Are you sure you want to logout?")) {
-      logout();
-      navigate('/login');
-    }
-  };
-    return(
-        <>        
+        if (confirm("Are you sure you want to logout?")) {
+            logout();
+            navigate('/login');
+        }
+    };
+    return (
+        <>
             <div className="side-nav">
                 <div className="logo-section">
                     <img src={logoImage} alt="" />
                     <span>Blommonie</span>
-                    
+
                 </div>
 
                 <div className="side-menu">
                     <ul>
-                        <li><a href="">Dashboard</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
                         <li><a href="">POS</a></li>
-                        <li><a href="">Inventry</a></li>
+                        <li><a href="/Inventory">Inventry</a></li>
                         <li><a href="">Purchases</a></li>
                         <li><a href="">Sales</a></li>
                         <li><a href="">Expenses</a></li>

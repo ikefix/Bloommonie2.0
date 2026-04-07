@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import axios from 'axios';
+import { useShopStore } from './shopStore';
 
 // API Configuration
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
@@ -309,6 +310,10 @@ export const useAuthStore = create((set, get) => ({
 
   // Logout Action
   logout: () => {
+    // Clear shop data first
+    const { clearShopData } = useShopStore.getState();
+    clearShopData();
+    
     // Clear all auth state
     set({
       user: null,
@@ -346,35 +351,97 @@ export const useAuthStore = create((set, get) => ({
     localStorage.removeItem('user');
   },
 
-  // Initialize auth state from localStorage
-  initializeAuth: () => {
+  // Initialize auth state from localStorage and fetch fresh user data
+  initializeAuth: async () => {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     
     if (token && user) {
       try {
+        // First, set initial state from localStorage for immediate UI
         const parsedUser = JSON.parse(user);
         set({
           token,
           user: parsedUser,
           isAuthenticated: true,
-          isInitializing: false
+          isInitializing: true // Keep initializing while fetching fresh data
         });
+
+        // Debug: Log the token and API URL
+        console.log('Fetching user data with token:', token.substring(0, 20) + '...');
+        console.log('API URL:', API_BASE_URL);
+
+        // Fetch fresh user data from backend
+        const userResponse = await axios.get(`${API_BASE_URL}/users/me`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        
+        console.log('User data response:', userResponse.data);
+        
+        if (userResponse.data && userResponse.data.user) {
+          const freshUserData = userResponse.data.user || userResponse.data;
+          
+          // Update store with fresh user data
+          set({
+            token,
+            user: freshUserData,
+            isAuthenticated: true,
+            isInitializing: false
+          });
+          
+          // Update localStorage with fresh user data
+          localStorage.setItem('user', JSON.stringify(freshUserData));
+        } else {
+          // Backend response doesn't have user data, keep localStorage data
+          console.log('No user data in response, using localStorage data');
+          set({
+            token,
+            user: parsedUser,
+            isAuthenticated: true,
+            isInitializing: false
+          });
+        }
+        
       } catch (error) {
-        console.error('Failed to parse user data:', error);
-        // Clear invalid data
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        set({
-          token: null,
-          user: null,
-          isAuthenticated: false,
-          isInitializing: false
-        });
+        console.error('Failed to fetch fresh user data:', error);
+        console.error('Error response:', error.response?.data);
+        console.error('Error status:', error.response?.status);
+        console.error('Error headers:', error.response?.headers);
+        
+        // If fetch fails, try to use localStorage data
+        try {
+          const parsedUser = JSON.parse(user);
+          console.log('Falling back to localStorage data:', parsedUser);
+          set({
+            token,
+            user: parsedUser,
+            isAuthenticated: true,
+            isInitializing: false
+          });
+        } catch (parseError) {
+          console.error('Failed to parse user data:', parseError);
+          // Clear invalid data
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          set({
+            token: null,
+            user: null,
+            isAuthenticated: false,
+            isInitializing: false
+          });
+        }
       }
     } else {
       // No token or user found, initialization complete
-      set({ isInitializing: false });
+      console.log('No token or user found in localStorage');
+      set({ 
+        token: null,
+        user: null,
+        isAuthenticated: false,
+        isInitializing: false
+      });
     }
   },
 

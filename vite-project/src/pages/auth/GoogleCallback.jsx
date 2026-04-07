@@ -52,19 +52,37 @@ const GoogleCallback = () => {
 
   const handleGoogleAuthSuccess = async (token, userId) => {
     try {
-      // Use the proper store action to set authentication state
-      setAuthState({
-        token: token,
-        isAuthenticated: true,
-        user: {
-          id: userId,
-          // We'll fetch more user data later if needed
+      // Fetch full user data from backend using the token
+      const userResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL}/users/me`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
         }
       });
       
-      // Persist to localStorage
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify({ id: userId }));
+      if (userResponse.ok) {
+        const userData = await userResponse.json();
+        
+        // Use the proper store action to set authentication state
+        setAuthState({
+          token: token,
+          isAuthenticated: true,
+          user: userData.user || userData // Handle different response formats
+        });
+        
+        // Persist to localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(userData.user || userData));
+      } else {
+        // Fallback to storing just the ID if user fetch fails
+        setAuthState({
+          token: token,
+          isAuthenticated: true,
+          user: { id: userId }
+        });
+        
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify({ id: userId }));
+      }
       
       setCallbackStatus('success');
       setMessage('Google authentication successful!');
@@ -83,7 +101,7 @@ const GoogleCallback = () => {
 
   const handleGoogleCallback = async (code) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/google/callback?code=${code}`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/users/google/callback?code=${code}`);
       const data = await response.json();
       
       if (data.token && data.user) {
