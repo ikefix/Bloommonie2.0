@@ -3,6 +3,7 @@ import SplashPage from "../pages/splash/splash";
 import Login from "../pages/auth/login";
 import Register from "../pages/auth/Register";
 import Admin from "../pages/admin/Dashboard";
+import CreateStore from "../pages/admin/CreateStore";
 
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ResetPassword from "../pages/auth/ResetPassword";
@@ -52,6 +53,8 @@ export default function AppNavigation() {
       <Route path="/ai-mode" element={<ProtectedRoute><AIMode /></ProtectedRoute>} />
       <Route path="/Inventory" element={<ProtectedRoute><Inventory /></ProtectedRoute>} />
       <Route path="/dashboard" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+      <Route path="/create-store" element={<ProtectedRoute><CreateStore /></ProtectedRoute>} />
+      {/* <Route path="/store/:code" element={<ProtectedRoute><StoreDetail /></ProtectedRoute>} /> */}
 
 
     </Routes>

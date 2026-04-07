@@ -5,9 +5,9 @@ const SearchBar = () =>{
     return(
 <div className="searcharea">
   <div className="images-icon">
-    <img src="" alt="" />
-    <img src="" alt="" />
-    <img src="" alt="" />
+    <img src={null} alt="" />
+    <img src={null} alt="" />
+    <img src={null} alt="" />
   </div>
 <div className="search-axis">
     <div className="search-container">

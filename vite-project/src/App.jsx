@@ -10,19 +10,29 @@ import './components/AuthLoadingScreen.css';
 const AppWithAuth = () => {
   const initializeAuth = useAuthStore((state) => state.initializeAuth);
   const isInitializing = useAuthStore((state) => state.isInitializing);
+  const [showMinLoading, setShowMinLoading] = React.useState(true);
 
   // Initialize authentication state from localStorage on app startup
   React.useEffect(() => {
     initializeAuth();
   }, [initializeAuth]);
 
-  // Show loading screen during authentication initialization
-  if (isInitializing) {
+  // Ensure minimum 3-second loading screen
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMinLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show loading screen during authentication initialization (minimum 3 seconds)
+  if (isInitializing || showMinLoading) {
     return (
       <div className="auth-loading-screen">
         <div className="loading-content">
           <div className="spinner"></div>
           <p>Initializing application...</p>
+          {isInitializing && <p style={{ fontSize: '0.875rem', color: '#666' }}>Fetching latest user data...</p>}
         </div>
       </div>
     );
