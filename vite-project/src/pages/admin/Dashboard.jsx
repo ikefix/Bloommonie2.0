@@ -10,9 +10,14 @@ export default function UserDashboard() {
   const { user, logout, isAuthenticated } = useAuthStore();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
+  const handleLogout = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (confirm("Are you sure you want to logout?")) {
+      logout();
+      navigate('/login');
+    }
   };
 
   // Show loading or redirect if not authenticated
