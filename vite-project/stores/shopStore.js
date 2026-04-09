@@ -395,6 +395,11 @@ const useShopStore = create(
       
       // Utility Actions
       
+      // Set shops (for updating from API responses)
+      setShops: (shops) => {
+        set({ shops });
+      },
+      
       // Set current shop
       setCurrentShop: (shop) => {
         set({ currentShop: shop });
@@ -405,8 +410,98 @@ const useShopStore = create(
         set({ currentShop: null });
       },
       
+      // Invitation Actions
+      
+      // Add cashier to shop
+      addCashierToShop: async (shopId, cashierData) => {
+        set({ isLoading: true, error: null });
+        
+        try {
+          const response = await axios.post(`${API_BASE_URL}/shops/add-cashier`, cashierData, {
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`,
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          return { success: true, data: response.data };
+        } catch (error) {
+          const errorMessage = error.response?.data?.message || 'Failed to add cashier';
+          set({ 
+            isLoading: false, 
+            error: errorMessage 
+          });
+          return { success: false, error: errorMessage };
+        }
+      },
+      
+      // Accept shop invitation
+      acceptShopInvitation: async (invitationData) => {
+        set({ isLoading: true, error: null });
+        
+        try {
+          const response = await axios.post(`${API_BASE_URL}/users/accept-invitation`, invitationData, {
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`,
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          return { success: true, data: response.data };
+        } catch (error) {
+          const errorMessage = error.response?.data?.message || 'Failed to accept invitation';
+          set({ 
+            isLoading: false, 
+            error: errorMessage 
+          });
+          return { success: false, error: errorMessage };
+        }
+      },
+      
+      // Google signup from invitation
+      googleSignupFromInvitation: async (invitationData) => {
+        set({ isLoading: true, error: null });
+        
+        try {
+          const response = await axios.post(`${API_BASE_URL}/users/google-signup`, invitationData, {
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`,
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          return { success: true, data: response.data };
+        } catch (error) {
+          const errorMessage = error.response?.data?.message || 'Failed to signup with Google';
+          set({ 
+            isLoading: false, 
+            error: errorMessage 
+          });
+          return { success: false, error: errorMessage };
+        }
+      },
+      
+      // Verify shop access
+      verifyShopAccess: async (code) => {
+        set({ isLoading: true, error: null });
+        
+        try {
+          const response = await axios.post(`${API_BASE_URL}/users/verify-shop-access`, { code });
+          
+          return { success: true, data: response.data };
+        } catch (error) {
+          const errorMessage = error.response?.data?.message || 'Failed to verify access';
+          set({ 
+            isLoading: false, 
+            error: errorMessage 
+          });
+          return { success: false, error: errorMessage };
+        }
+      },
+      
       // Clear all shop data (for logout)
       clearShopData: () => {
+        // Clear Zustand state
         set({
           shops: [],
           currentShop: null,
@@ -419,6 +514,9 @@ const useShopStore = create(
             limit: 20
           }
         });
+        
+        // Also clear persist storage explicitly
+        localStorage.removeItem('shop-storage');
       },
       
       // Clear error
@@ -453,3 +551,6 @@ const useShopStore = create(
 );
 
 export { useShopStore };
+
+// Also export the store instance for direct access
+export const shopStore = useShopStore;

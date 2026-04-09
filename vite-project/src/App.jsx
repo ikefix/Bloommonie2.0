@@ -30,7 +30,7 @@ const AppWithAuth = () => {
     return (
       <div className="auth-loading-screen">
         <div className="loading-content">
-          <div className="spinner"></div>
+          <div className="loader"></div>
           <p>Initializing application...</p>
           {isInitializing && <p style={{ fontSize: '0.875rem', color: '#666' }}>Fetching latest user data...</p>}
         </div>

@@ -6,19 +6,19 @@ import SideNav from '../../components/sideNav';
 import SearchBar from '../../components/SearchBar';
 import '../../css/CreateStore.css';
 
-
 export default function CreateStore() {
-  const { createShop, isLoading } = useShopStore();
+  const { createShop, isLoading, addCashierToShop } = useShopStore();
   const navigate = useNavigate();
   const { user, logout, isAuthenticated } = useAuthStore();
 
   const handleLogout = () => {
-
         if (confirm("Are you sure you want to logout?")) {
             logout();
             navigate('/login');
         }
     };
+
+    console.log(user._id)
   
   const [formData, setFormData] = useState({
     name: '',
@@ -42,6 +42,7 @@ export default function CreateStore() {
       country: 'Nigeria',
       zipCode: ''
     },
+    createdBy: user._id || '',
     location: {
       name: '',
       description: '',
@@ -66,6 +67,55 @@ export default function CreateStore() {
       dateFormat: 'DD/MM/YYYY'
     }
   });
+
+  // State for team member invitation
+  const [teamMemberInput, setTeamMemberInput] = useState('');
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [showTeamSuggestions, setShowTeamSuggestions] = useState(false);
+  const [addingMember, setAddingMember] = useState(false);
+
+  // Handler functions for team members
+  const handleTeamMemberChange = (e) => {
+    const value = e.target.value;
+    setTeamMemberInput(value);
+    setShowTeamSuggestions(value.length > 0);
+  };
+
+  const addTeamMember = async (email, name = email) => {
+    if (!email || !email.includes('@') || teamMembers.some(m => m.email === email)) {
+      return;
+    }
+
+    setAddingMember(true);
+    try {
+      const result = await addCashierToShop('temp', { email, name, role: 'cashier' });
+      
+      if (result.success) {
+        setTeamMembers([...teamMembers, { email, name, status: 'invited' }]);
+        setTeamMemberInput('');
+        setShowTeamSuggestions(false);
+      } else {
+        alert(`Failed to invite team member: ${result.error}`);
+      }
+    } catch (error) {
+      alert(`Error inviting team member: ${error.message}`);
+    } finally {
+      setAddingMember(false);
+    }
+  };
+
+  const removeTeamMember = (emailToRemove) => {
+    const updatedTeamMembers = teamMembers.filter(member => member.email !== emailToRemove);
+    setTeamMembers(updatedTeamMembers);
+  };
+
+  const handleTeamMemberKeyPress = (e) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      const [name, email] = teamMemberInput.includes(' ') ? teamMemberInput.split(' ') : [teamMemberInput, teamMemberInput];
+      addTeamMember(email.trim(), name.trim());
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -113,18 +163,43 @@ export default function CreateStore() {
     }
   };
 
+  // Local loading state for form submission
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmitWithLoading = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const result = await createShop(formData);
+      
+      if (result.success) {
+        navigate(`/store/${result.data.code}`);
+      } else {
+        alert(`Error creating store: ${result.error}`);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="create-store-container">      
       <div className="create-store-main-content">
         <div className="create-store-header">
           <h1 className="create-store-header-title">Create New Store</h1>
           <p className="create-store-header-subtitle">Set up your business store with our comprehensive management system</p>
-        <a onClick={handleLogout}>Logout</a>
+          <button 
+            onClick={handleLogout}
+            className="create-store-logout-btn"
+          >
+            Logout
+          </button>
         </div>
 
         
         <div className="create-store-form-container">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmitWithLoading}>
             {/* Basic Information */}
             <div className="create-store-section">
               <h2 className="create-store-section-title">Basic Information</h2>
@@ -225,6 +300,61 @@ export default function CreateStore() {
               </div>
             </div>
 
+            {/* Team Members Section */}
+            <div className="create-store-section">
+              <h2 className="create-store-section-title">Team Members & Cashiers</h2>
+              <p className="create-store-section-description">
+                Add team members or cashiers who will have access to this store. They will receive invitation emails to set up their accounts.
+              </p>
+              
+              <div className="create-store-form-group">
+                <label className="create-store-label">Add Team Members</label>
+                <div className="create-store-collaborator-input-container">
+                  <input
+                    type="text"
+                    value={teamMemberInput}
+                    onChange={handleTeamMemberChange}
+                    onKeyPress={handleTeamMemberKeyPress}
+                    className="create-store-collaborator-input"
+                    placeholder="Enter email or 'Name email' and press Enter"
+                    disabled={addingMember}
+                  />
+                  {showTeamSuggestions && (
+                    <div className="create-store-collaborator-suggestions">
+                      <div className="create-store-collaborator-suggestion-item">
+                        Press <strong>Enter</strong> to add {teamMemberInput}
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
+                {teamMembers.length > 0 && (
+                  <div className="create-store-collaborators-list">
+                    {teamMembers.map((member, index) => (
+                      <div key={index} className="create-store-collaborator-item">
+                        <div className="create-store-collaborator-avatar">
+                          {member.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div className="create-store-collaborator-info">
+                          <div className="create-store-collaborator-email">{member.email}</div>
+                          <div className="create-store-collaborator-role">
+                            {member.status === 'invited' ? 'Invitation Sent' : 'Pending'}
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removeTeamMember(member.email)}
+                          className="create-store-collaborator-remove"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
             {/* Address Information */}
             <div className="create-store-section">
               <h2 className="create-store-section-title">Address Information</h2>
@@ -302,10 +432,10 @@ export default function CreateStore() {
               
               <button
                 type="submit"
-                disabled={isLoading}
+                disabled={isSubmitting}
                 className="create-store-button create-store-primary"
               >
-                {isLoading ? (
+                {isSubmitting ? (
                   <>
                     <div className="create-store-loading-spinner"></div>
                     Creating Store...
