@@ -1,4 +1,4 @@
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 
 .box-axisarea {
   background-color: rgb(231, 231, 243);
@@ -10,20 +10,19 @@
   overflow-x: hidden;
 }
 
+/* ================= FIRST ROW ================= */
+
 .box-section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   width: 100%;
   box-sizing: border-box;
-
-  
-  
 }
+
 .box-section > div {
   display: flex;
-align-content: center;
- 
+  align-content: center;
 }
 
 /* CARD BASE */
@@ -31,10 +30,12 @@ align-content: center;
 .wallet-box-area,
 .data-box-area,
 .bills-box-area {
-  background: #f9fafb;;
+  background: #f9fafb;
   border: 1px solid #e2e5ec;
   border-radius: 10px;
   padding: 18px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* INNER CARD */
@@ -45,7 +46,8 @@ align-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1px;
+  gap: 8px;
+  width: 100%;
 }
 
 /* ICON */
@@ -68,20 +70,16 @@ align-content: center;
   font-weight: 550;
   margin: 0;
 }
-.box-sales h3{
+
+.box-sales h3 {
   color: #2e7d32;
 }
-.box-wallet h3{
-  color: black;
-}
-.box-data h3{
-  color: black;
-}
-.box-bills h3{
-  color: black;
-}
 
-
+.box-wallet h3,
+.box-data h3,
+.box-bills h3 {
+  color: black;
+}
 
 .box-sales h1,
 .box-wallet h1,
@@ -102,45 +100,40 @@ align-content: center;
   cursor: pointer;
 }
 
-/* ===== COLORS PER CARD ===== */
-
-/* SALES */
-
+/* COLORS PER CARD */
 .sales-box-area .card-icon {
   background: #4caf50;
   color: #fff;
 }
+
 .sales-box-area h1 {
   color: #2e7d32;
 }
-
-/* WALLET */
 
 .wallet-box-area .card-icon {
   background: #1e3a8a;
   color: #fff;
 }
+
 .wallet-box-area h1 {
   color: #1e3a8a;
 }
-
-/* DATA */
 
 .data-box-area .card-icon {
   background: #f59e0b;
   color: #fff;
 }
+
 .data-box-area h1 {
   font-size: 14px;
   color: #555;
 }
 
-/* BILLS */
-
 .bills-box-area .card-icon {
   background: #7c3aed;
   color: #fff;
 }
+
 .bills-box-area h1 {
   font-size: 14px;
   color: #666;
@@ -149,7 +142,7 @@ align-content: center;
 /* BUTTON BASE */
 .box-wallet button,
 .box-data button {
-  margin-top: auto; /* pushes to bottom */
+  margin-top: auto;
   width: 100%;
   padding: 8px 0;
   border: none;
@@ -162,17 +155,18 @@ align-content: center;
 
 /* SPECIFIC COLORS */
 .box-wallet button {
-  background: #1f3a63; /* dark blue */
+  background: #1f3a63;
 }
 
 .box-data button {
-  background: #f4a340; /* orange */
+  background: #f4a340;
 }
 
+/* ICON CIRCLE */
 .icon-circle {
   width: 50px;
   height: 50px;
-  min-width: 50px; /* prevents shrinking */
+  min-width: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -180,7 +174,7 @@ align-content: center;
 }
 
 .icon-circle svg {
-  font-size: 22px; /* controls icon size */
+  font-size: 22px;
   color: #fff;
 }
 
@@ -208,40 +202,37 @@ align-content: center;
 
 .text span {
   font-size: 15px;
-  color: #9ca3af; /* faint grey */
+  color: #9ca3af;
   font-weight: 420;
 }
 
-.link  {
+.link {
   font-size: 17px;
-  color:#1e3a8a;
+  color: #1e3a8a;
   font-weight: 600;
   cursor: pointer;
 }
 
-.link-bills  {
+.link-bills {
   font-size: 17px;
-  color:#7c3aed;
+  color: #7c3aed;
   font-weight: 600;
   cursor: pointer;
 }
 
-
-
-/* ================= SECOND AXIS ================= */
+/* ================= SECOND ROW ================= */
 
 .secondaxis {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display: flex;
+  gap: 14px;
   margin-top: 20px;
-  width: 100%;
-  box-sizing: border-box;
   align-items: stretch;
+  width: 100%;
 }
 
 .inventory-status,
 .inventory-wallet {
+  flex: 1;
   width: 100%;
   min-width: 0;
 }
@@ -257,6 +248,7 @@ align-content: center;
   min-height: 215px;
   box-sizing: border-box;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  height: 100%;
 }
 
 /* HEADER */
@@ -289,8 +281,16 @@ align-content: center;
   white-space: nowrap;
 }
 
+.inventory-header button {
+  width: 148px;
+}
+
 /* HR */
-.secondaxis hr {
+.secondaxis hr,
+.sales-history-card hr,
+.quick-actions-card hr,
+.bottom-quick-actions-card hr,
+.sales-overview-card hr {
   width: 100%;
   border: none;
   border-top: 1px solid #e5e7eb;
@@ -400,166 +400,47 @@ align-content: center;
   background: #1564c0;
 }
 
-
-
-
-/* HEADER */
-
-.inventory-header h2 {
-  font-size: 18px;
-  margin: 0;
+/* TEXT COLORS */
+.green-text {
+  color: #179247;
 }
 
- .inventory-header button {
-    background: #f4f4f7;
-    border: 1px solid #d8dce5;
-    border-radius: 8px;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    cursor: pointer;
-    width: 100px;
-    margin-bottom: 12px;
-    width: 148px;
+.red-text {
+  color: #c81e1e;
 }
 
-/* STATS GRID */
-.inventory-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 15px;
+/* ================= LOWER DASHBOARD GRID ================= */
 
-}
-
-
-
-
-
-/* COLORS */
-.green {
-  color: #2e7d32;
-}
-
-.red {
-  color: #dc2626;
-}
-
-.sub {
-  font-size: 12px;
-}
-
-
-
-
-
-
-.wallet-card {
-  background:#f9fafb;
-  border-radius: 10px;
-  padding: 18px 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e3e6ee;
-  min-height: 215px;
-}
-
-.wallet-services-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.wallet-services-header h2 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #173a72;
-  margin: 0;
-}
-
-.wallet-services-header button {
-  background: #f4f4f7;
-  border: 1px solid #d8dce5;
-  border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-}
-
-
-
-
-
-
-
-
-.green-box {
-  background: #1c8b3c;
-}
-
-.yellow-box {
-  background: #d4a813;
-}
-
-.red-box {
-  background: #c31515;
-}
-
-.blue-box {
-  background: #1564c0;
-}
-
-.secondaxis {
-  display: flex;
-  gap: 14px;
-  margin-top: 14px;
-  align-items: stretch;
-}
-
-
-
-.inventory-status,
-.inventory-wallet {
-  flex: 1;
-  background-color:#f9fafb ;
-    width: 100%;
-  min-width: 0;
-}
-
-.inventory-card,
-.wallet-card {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-.inventory-card {
-  min-height: 215px;
-  /* padding: 18px 16px; */
-}
-
-
-
-
-/* ================= THIRD AXIS ================= */
-
-.thirdaxis {
+.dashboard-lower-grid {
   display: grid;
   grid-template-columns: 2fr 1.1fr;
   gap: 16px;
   margin-top: 20px;
   width: 100%;
-  box-sizing: border-box;
-  align-items: start;
+  align-items: stretch;
 }
 
-/* LEFT CARD */
+.dashboard-left-column,
+.dashboard-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.dashboard-right-column {
+  height: 100%;
+}
+
+/* ================= SALES HISTORY ================= */
+
 .sales-history-card {
   background: #fff;
   border-radius: 12px;
   padding: 18px 20px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .sales-history-header {
@@ -573,6 +454,7 @@ align-content: center;
   font-size: 18px;
   color: #183b6b;
   font-weight: 700;
+  margin: 0;
 }
 
 .sales-history-header button {
@@ -663,13 +545,16 @@ align-content: center;
   color: #9333ea;
 }
 
-/* RIGHT CARD */
-.quick-actions-card {
-  background: #fff;
+/* ================= TOP QUICK ACTIONS ================= */
+
+/* .quick-actions-card {
+  background:#f9fafb;
   border-radius: 12px;
   padding: 18px 20px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
+  width: 100%;
+  box-sizing: border-box;
+} */
 
 .quick-actions-header {
   display: flex;
@@ -682,6 +567,7 @@ align-content: center;
   font-size: 18px;
   color: #183b6b;
   font-weight: 700;
+  margin: 0;
 }
 
 .quick-actions-header button {
@@ -698,18 +584,19 @@ align-content: center;
   display: flex;
   justify-content: space-between;
   gap: 14px;
-  margin-top: 22px;
+  margin-top: 16px;
+
 }
 
 .quick-action {
   flex: 1;
-  height: 95px;
+  height: 82px;
   border-radius: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: white;
   cursor: pointer;
 }
@@ -725,27 +612,264 @@ align-content: center;
 
 .green-action {
   background: #179247;
+
 }
 
 .blue-action {
   background: #0d3f8f;
 }
 
-/* TEXT COLORS */
-.green-text {
-  color: #179247;
+/* ================= BOTTOM QUICK ACTIONS ================= */
+
+.bottom-quick-actions-card {
+  background: #fff;
+  border: 1px solid #e3e6ee;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.red-text {
-  color: #c81e1e;
+.quick-actions-card{
+  background-color: #f9fafb !important;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  .thirdaxis {
-    grid-template-columns: 1fr;
+.bottom-quick-actions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.bottom-quick-actions-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #173a72;
+  margin: 0;
+}
+
+.bottom-quick-actions-header button {
+  background: #0f67c6;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.bottom-quick-actions-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.action-group {
+  border-radius: 14px;
+  padding: 10px 10px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.group-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group-top span:first-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.group-top span:last-child {
+  font-size: 18px;
+  color: #fff;
+}
+
+.group-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 17px;
+  margin-top: 30px;
+}
+
+.small-action-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.green-group {
+  background: #1b8d43;
+  
+}
+
+.green-btn {
+  background: #157437;
+}
+
+.purple-group {
+  background: #7c3aed;
+}
+
+.purple-btn {
+  background: #6929d6;
+}
+
+/* ================= SALES OVERVIEW ================= */
+
+.sales-overview-card {
+  background: #f9fafb;
+  border: 1px solid #e3e6ee;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+}
+
+.sales-overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sales-overview-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #173a72;
+  margin: 0;
+}
+
+.sales-overview-icon-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9fafb;
+  border: 1px solid #d8dce5;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+.sales-overview-body {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sales-overview-body h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #173a72;
+  margin: 0 0 20px 0;
+}
+
+/* CHART AREA */
+.chart-area {
+  width: 100%;
+  flex: 1;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chart-line {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 103, 198, 0.14) 0%,
+    rgba(15, 103, 198, 0.04) 50%,
+    rgba(15, 103, 198, 0.02) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* fake line curve */
+.chart-line::before {
+  content: "";
+  position: absolute;
+  left: 6%;
+  top: 58%;
+  width: 88%;
+  height: 85px;
+  border-top: 4px solid #0f67c6;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transform: rotate(-2deg);
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.chart-labels span {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ================= PREVENT OVERFLOW ================= */
+
+.sales-box-area,
+.wallet-box-area,
+.data-box-area,
+.bills-box-area,
+.inventory-status,
+.inventory-wallet,
+.sales-history-card,
+.quick-actions-card,
+.inventory-card,
+.wallet-card,
+.bottom-quick-actions-card,
+.sales-overview-card {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  background-color: #f9fafb;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .box-section {
+    grid-template-columns: repeat(2, 1fr);
   }
 
+  .secondaxis {
+    flex-direction: column;
+  }
+
+  .dashboard-lower-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
   .sales-history-body {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -764,49 +888,34 @@ align-content: center;
 
   .quick-actions-body {
     flex-direction: column;
+    background-color: #f9fafb;
+  }
+
+  .bottom-quick-actions-body {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-overview-card {
+    min-height: 300px;
   }
 }
 
-.thirdaxis {
-  display: grid;
-  grid-template-columns: 2fr 1.1fr;
-  gap: 16px;
-  margin-top: 20px;
-  align-items: start;
-}
+@media (max-width: 768px) {
+  .box-axisarea {
+    margin-left: 0;
+    width: 100%;
+    padding: 14px;
+  }
 
-.quick-actions-body {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  margin-top: 16px;
-}
+  .box-section {
+    grid-template-columns: 1fr;
+  }
 
-.quick-action {
-  flex: 1;
-  height: 82px;
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  cursor: pointer;
-}
+  .inventory-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-/* PREVENT OVERFLOW */
-.sales-box-area,
-.wallet-box-area,
-.data-box-area,
-.bills-box-area,
-.inventory-status,
-.inventory-wallet,
-.sales-history-card,
-.quick-actions-card,
-.inventory-card,
-.wallet-card {
-  width: 100%;
-  box-sizing: border-box;
-  min-width: 0;
+  .wallet-services-body {
+    flex-direction: column;
+  }
 }
