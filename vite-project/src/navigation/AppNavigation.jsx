@@ -4,6 +4,8 @@ import Login from "../pages/auth/login";
 import Register from "../pages/auth/Register";
 import Admin from "../pages/admin/Dashboard";
 import CreateStore from "../pages/admin/CreateStore";
+import ShopInvitation from "../pages/auth/ShopInvitation";
+import ShopVerification from "../pages/auth/ShopVerification";
 
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ResetPassword from "../pages/auth/ResetPassword";
@@ -49,6 +51,10 @@ export default function AppNavigation() {
       <Route path="/verify-email/:token" element={<VerifyEmail />} />
       <Route path="/auth/google/callback" element={<GoogleCallback />} />
       <Route path="/success-register" element={<SuccessPage />} />
+      
+      {/* Shop Invitation Routes */}
+      <Route path="/shop-invitation" element={<ShopInvitation />} />
+      <Route path="/shop-verification" element={<ShopVerification />} />
       
       {/* Protected Routes */}
       <Route path="/ai-mode" element={<ProtectedRoute><AIMode /></ProtectedRoute>} />

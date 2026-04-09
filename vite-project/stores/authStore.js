@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import axios from 'axios';
-import { useShopStore } from './shopStore';
+import { useShopStore, shopStore } from './shopStore';
 
 // API Configuration
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
@@ -310,9 +310,17 @@ export const useAuthStore = create((set, get) => ({
 
   // Logout Action
   logout: () => {
-    // Clear shop data first
-    const { clearShopData } = useShopStore.getState();
-    clearShopData();
+    // Clear shop data
+    console.log('Clearing shop data during logout...');
+    shopStore.getState().clearShopData();
+    
+    // Clear any shop-related localStorage items
+    localStorage.removeItem('currentShop');
+    localStorage.removeItem('selectedShop');
+    localStorage.removeItem('shops');
+    localStorage.removeItem('shop-storage'); // Clear persist storage
+    
+    console.log('Shop data cleared successfully');
     
     // Clear all auth state
     set({
@@ -393,6 +401,12 @@ export const useAuthStore = create((set, get) => ({
           
           // Update localStorage with fresh user data
           localStorage.setItem('user', JSON.stringify(freshUserData));
+          
+          // Also store shops data if available
+          if (userResponse.data.shops) {
+            localStorage.setItem('shops', JSON.stringify(userResponse.data.shops));
+            console.log('Shops data stored in localStorage:', userResponse.data.shops);
+          }
         } else {
           // Backend response doesn't have user data, keep localStorage data
           console.log('No user data in response, using localStorage data');
