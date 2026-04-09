@@ -1,4 +1,6 @@
 import { FaSearch } from 'react-icons/fa';
+import { FaShoppingCart } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
 import '../Css/SearchBar.css'
 
 const SearchBar = () =>{
@@ -18,6 +20,11 @@ const SearchBar = () =>{
         className="search-input"
       />
     </div>
+</div>
+<div className="icons-searchbararea">
+  <FaShoppingCart />
+  <FaUsers />
+  
 </div>
 </div>
     )
