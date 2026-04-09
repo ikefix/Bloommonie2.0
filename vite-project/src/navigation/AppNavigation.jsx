@@ -14,6 +14,7 @@ import AIMode from "../pages/AIMode";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Inventory from "../pages/admin/Inventory";
 import SuccessPage from "../pages/auth/successPage";
+import Wallet from "../pages/admin/wallet";
 
 
 export default function AppNavigation() {
@@ -55,6 +56,8 @@ export default function AppNavigation() {
       <Route path="/dashboard" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
       <Route path="/create-store" element={<ProtectedRoute><CreateStore /></ProtectedRoute>} />
       {/* <Route path="/store/:code" element={<ProtectedRoute><StoreDetail /></ProtectedRoute>} /> */}
+
+      <Route path="/wallet" element={<ProtectedRoute><Wallet /></ProtectedRoute>} />
 
 
     </Routes>
