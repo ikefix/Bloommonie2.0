@@ -167,18 +167,18 @@
 }
 
 .status.in {
-  background: #4a8744;
-  color: #ffffff;
+  background:#4CAF50;
+  color:#FFFFFF;
 }
 
 .status.low {
-  background: #fef3c7;
-  color: #92400e;
+  background: #F59E0B;
+  color: #FFFFFF;
 }
 
 .status.out {
-  background: #fee2e2;
-  color: #991b1b;
+  background: #dd2b2b;
+  color: #FFFFFF;
 }
 
 .actions {
@@ -189,11 +189,20 @@
 .edit-btn {
   padding: 10px 15px;
   border-radius: 6px;
-  background: rgb(46, 68, 139);
-  color: #fff;
+  background:#3B6EA8;
+  color: #FFFFFF;
   border: none;
   cursor: pointer;
   margin-bottom: 10px;
+}
+
+.add-btn{
+  background-color: #4CAF50;
+  border-radius: 0.5rem;
+  width: 9.5rem;
+  color: #FFFFFF;
+  border:none;
+  cursor: pointer;
 }
 
 .more-btn {
