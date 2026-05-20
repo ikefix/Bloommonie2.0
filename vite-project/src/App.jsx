@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import AppNavigation from "./navigation/AppNavigation";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ConnectionChecker from "./components/ConnectionChecker";
+import SkeletonLoader from "./components/SkeletonLoader";
 import { useAuthStore } from '../stores/authStore';
 import './components/AuthLoadingScreen.css';
 
@@ -11,6 +12,7 @@ const AppWithAuth = () => {
   const initializeAuth = useAuthStore((state) => state.initializeAuth);
   const isInitializing = useAuthStore((state) => state.isInitializing);
   const [showMinLoading, setShowMinLoading] = React.useState(true);
+  const [isFirstLaunch, setIsFirstLaunch] = React.useState(true);
 
   // Initialize authentication state from localStorage on app startup
   React.useEffect(() => {
@@ -25,17 +27,23 @@ const AppWithAuth = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Detect if this is first launch (not a reload)
+  React.useEffect(() => {
+    // Check if we're coming from a direct app launch (not navigation within app)
+    const navigationEntries = performance.getEntriesByType('navigation');
+    if (navigationEntries.length > 0) {
+      const entry = navigationEntries[0];
+      // If it's a reload or navigation, mark as not first launch
+      if (entry.type === 'reload' || entry.type === 'back_forward') {
+        setIsFirstLaunch(false);
+      }
+    }
+  }, []);
+
   // Show loading screen during authentication initialization (minimum 3 seconds)
-  if (isInitializing || showMinLoading) {
-    return (
-      <div className="auth-loading-screen">
-        <div className="loading-content">
-          <div className="loader"></div>
-          <p>Initializing application...</p>
-          {isInitializing && <p style={{ fontSize: '0.875rem', color: '#666' }}>Fetching latest user data...</p>}
-        </div>
-      </div>
-    );
+  // Only show if not first launch (splash screen handles first time)
+  if ((isInitializing || showMinLoading) && !isFirstLaunch) {
+    return <SkeletonLoader />;
   }
 
   return <AppComponent />;

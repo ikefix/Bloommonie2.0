@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function WelcomeModal({ isOpen, onClose, onCreateStore }) {
+  // Check if welcome modal has been shown before
+  useEffect(() => {
+    if (isOpen) {
+      const hasSeenWelcomeModal = localStorage.getItem('hasSeenWelcomeModal');
+      if (hasSeenWelcomeModal) {
+        // If user has seen it before, close it immediately
+        onClose();
+      } else {
+        // Mark as seen for future visits
+        localStorage.setItem('hasSeenWelcomeModal', 'true');
+      }
+    }
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
@@ -111,7 +125,7 @@ export default function WelcomeModal({ isOpen, onClose, onCreateStore }) {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         @keyframes slideIn {
           from {
             opacity: 0;

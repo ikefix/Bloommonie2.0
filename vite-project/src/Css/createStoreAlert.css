@@ -1,0 +1,367 @@
+.create-store-alert-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.create-store-alert {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.6s ease-out;
+}
+
+.create-store-alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, rgb(124, 141, 194) 0%, rgb(46, 68, 139) 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.alert-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgb(124, 141, 194) 0%, rgb(46, 68, 139) 100%);
+    border-radius: 50%;
+    margin-bottom: 25px;
+    position: relative;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.alert-icon-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.alert-icon {
+    color: white;
+    font-size: 36px;
+    z-index: 1;
+    position: relative;
+}
+
+.alert-content {
+    margin-bottom: 30px;
+}
+
+.alert-title {
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+.alert-description {
+    color: #6c757d;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 400;
+}
+
+.create-store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    color: white;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.create-store-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.create-store-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+    background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+}
+
+.create-store-btn:hover::before {
+    left: 100%;
+}
+
+.create-store-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-icon {
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(102, 126, 234, 0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .create-store-alert-container {
+        padding: 15px;
+    }
+    
+    .create-store-alert {
+        padding: 30px 25px;
+        margin: 10px;
+    }
+    
+    .alert-title {
+        font-size: 24px;
+    }
+    
+    .alert-description {
+        font-size: 15px;
+    }
+    
+    .create-store-btn {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+    
+    .alert-icon-wrapper {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .alert-icon {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .create-store-alert-container {
+        padding: 10px;
+    }
+    
+    .create-store-alert {
+        padding: 25px 20px;
+    }
+    
+    .alert-title {
+        font-size: 22px;
+    }
+    
+    .alert-description {
+        font-size: 14px;
+    }
+    
+    .create-store-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .alert-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .alert-icon {
+        font-size: 28px;
+    }
+}
+
+/* Inline Alert Design */
+.create-store-alert-inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    padding: 16px 20px;
+    margin: 20px auto;
+    position: relative;
+    top: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    animation: slideIn 0.3s ease-out;
+}
+
+.alert-content-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.alert-icon-inline {
+    color: red;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.alert-text-inline {
+    flex: 1;
+}
+
+.alert-text-inline h3 {
+    color: red;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    line-height: 1.2;
+}
+
+.alert-text-inline p {
+    color: #6c757d;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.create-store-btn-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgb(124, 141, 194) 0%, rgb(46, 68, 139) 100%);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.create-store-btn-inline:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124, 141, 194, 0.3);
+    background: linear-gradient(135deg, rgb(46, 68, 139) 0%, rgb(124, 141, 194) 100%);
+}
+
+.create-store-btn-inline:active {
+    transform: translateY(0);
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .create-store-alert-inline {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+    
+    .alert-content-inline {
+        width: 100%;
+    }
+    
+    .create-store-btn-inline {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .alert-text-inline h3 {
+        font-size: 15px;
+    }
+    
+    .alert-text-inline p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .create-store-alert-inline {
+        margin: 15px 0;
+        padding: 12px 14px;
+    }
+    
+    .alert-icon-inline {
+        font-size: 18px;
+    }
+    
+    .alert-text-inline h3 {
+        font-size: 14px;
+    }
+    
+    .alert-text-inline p {
+        font-size: 12px;
+    }
+    
+    .create-store-btn-inline {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+}

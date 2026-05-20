@@ -31,7 +31,14 @@
     background: linear-gradient(to right, rgb(124, 141, 194), rgb(46, 68, 139));
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 20px;
     height: 55px;
+}
+.images-icon{
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 .search-axis{
     display: flex;

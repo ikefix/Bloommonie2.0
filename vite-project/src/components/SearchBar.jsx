@@ -1,17 +1,9 @@
-import { FaSearch } from 'react-icons/fa';
-import { FaShoppingCart } from "react-icons/fa";
-import { FaBell } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
+import { FaSearch, FaUser, FaShoppingCart, FaInfoCircle, FaCog } from 'react-icons/fa';
 import '../Css/SearchBar.css'
 
 const SearchBar = () =>{
     return(
 <div className="searcharea">
-  <div className="images-icon">
-    <img src={null} alt="" />
-    <img src={null} alt="" />
-    <img src={null} alt="" />
-  </div>
 <div className="search-axis">
     <div className="search-container">
       <FaSearch className="search-icon" />
@@ -22,13 +14,12 @@ const SearchBar = () =>{
       />
     </div>
 </div>
-<div className="icons-searchbararea">
-  <FaUser className="user-icon" />
-  <FaShoppingCart className="cart-icon" />
-  <FaBell className="notification-icon" />
- 
-  
-</div>
+  <div className="images-icon">
+    <FaUser size={25} color='#fff'/>
+    <FaShoppingCart size={25} color='#fff'/>
+    <FaInfoCircle size={25} color='#fff'/>
+    <FaCog size={25} color='#fff'/>
+  </div>
 </div>
     )
 }

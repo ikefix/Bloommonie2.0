@@ -19,14 +19,7 @@ const VerifyEmail = () => {
   
   const [verificationStatus, setVerificationStatus] = useState('loading'); // loading, success, error
   const [message, setMessage] = useState('');
-
-  // Redirect if already authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/dashboard');
-    }
-  }, [isAuthenticated, navigate]);
-
+  
   useEffect(() => {
     const token = searchParams.get('token');
     
