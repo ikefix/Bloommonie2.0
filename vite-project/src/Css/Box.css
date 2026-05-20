@@ -38,6 +38,13 @@
   box-sizing: border-box;
 }
 
+/* MATCH WALLET CARD HEIGHTS */
+.sales-box-area,
+.wallet-box-area,
+.data-box-area {
+  min-height: 160px;
+}
+
 /* INNER CARD */
 .box-sales,
 .box-wallet,
@@ -45,9 +52,11 @@
 .box-bills {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
   width: 100%;
+  height: 100%;
 }
 
 /* ICON */

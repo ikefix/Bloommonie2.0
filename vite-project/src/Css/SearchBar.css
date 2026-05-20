@@ -37,3 +37,8 @@
     display: flex;
   align-items: center;
 }
+.icons-searchbararea{
+    gap: 20rem ;
+    margin-right: 100px;
+
+}

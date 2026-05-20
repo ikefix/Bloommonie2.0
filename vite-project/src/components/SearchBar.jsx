@@ -1,6 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import { FaShoppingCart } from "react-icons/fa";
-import { FaUsers } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import '../Css/SearchBar.css'
 
 const SearchBar = () =>{
@@ -22,8 +23,10 @@ const SearchBar = () =>{
     </div>
 </div>
 <div className="icons-searchbararea">
-  <FaShoppingCart />
-  <FaUsers />
+  <FaUser className="user-icon" />
+  <FaShoppingCart className="cart-icon" />
+  <FaBell className="notification-icon" />
+ 
   
 </div>
 </div>

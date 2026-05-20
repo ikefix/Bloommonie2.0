@@ -48,6 +48,9 @@ const WalletSection = () => {
             </div>
 
           </div>
+
+          {/* Action Buttons */}
+
         </div>
 
         {/* RIGHT SIDE */}

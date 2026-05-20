@@ -109,6 +109,11 @@
 .wallet-icon,
 .quick-icon {
   font-size: 32px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: white;
 }
 
@@ -267,13 +272,13 @@
   .wallet-icon-circle,
   .quick-icon-circle,
   .wallet-icon-box {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 50px;
   }
 
   .wallet-icon,
   .quick-icon {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .wallet-text h1 {
@@ -293,4 +298,7 @@
     padding: 10px 18px;
     min-width: 150px;
   }
+
+
+  
 }
