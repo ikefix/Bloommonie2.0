@@ -17,7 +17,7 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import Inventory from "../pages/admin/Inventory";
 import SuccessPage from "../pages/auth/successPage";
 import Wallet from "../pages/admin/wallet";
-
+import Sales from "../pages/admin/Sales";
 
 export default function AppNavigation() {
   return (
@@ -64,6 +64,7 @@ export default function AppNavigation() {
       {/* <Route path="/store/:code" element={<ProtectedRoute><StoreDetail /></ProtectedRoute>} /> */}
 
       <Route path="/wallet" element={<ProtectedRoute><Wallet /></ProtectedRoute>} />
+      <Route path="/Sales" element={<ProtectedRoute><Sales/></ProtectedRoute>}></Route>
 
 
     </Routes>
