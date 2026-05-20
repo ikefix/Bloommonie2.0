@@ -17,56 +17,47 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import Inventory from "../pages/admin/Inventory";
 import SuccessPage from "../pages/auth/successPage";
 import Wallet from "../pages/admin/wallet";
-
+import { useAuthStore } from "../../stores/authStore";
 
 export default function AppNavigation() {
+  const { isAuthenticated } = useAuthStore();
+
   return (
     <Routes>
       {/* root path will render the splash screen first */}
       <Route index element={<SplashPage />} />
       <Route path="/" element={<SplashPage />} />
-      <Route path="/register" element={<Register/>}/>
       
-      {/* Authentication Routes */}
-      <Route path="/login" element={<Login />} />
-      {/* <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} /> */}
-      <Route path="/admin" element={<Admin />} />
-      <Route path="/Inventory" element={<Inventory />} />
-      <Route path="/forgetpassword" element={<ForgotPassword />} />
-
+      {/* Authentication Routes - Only show when not authenticated */}
+      {!isAuthenticated && (
+        <>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
+        </>
+      )}
       
-
-      {/* {isAuthenticated ? (
+      {/* Protected Routes - Only show when authenticated */}
+      {isAuthenticated && (
         <>
-          <Route path="/Home" element={<Home />} />
+          <Route path="/dashboard" element={<Admin />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/shop-invitation" element={<ShopInvitation />} />
+          <Route path="/shop-verification" element={<ShopVerification />} />
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/wallet" element={<Wallet />} />
+          <Route path="/ai-mode" element={<AIMode />} />
+          <Route path="/create-store" element={<CreateStore />} />
         </>
-      ) : (
-        <>
-            <Route path="/login" element={<Login />} />
-        </>
-      )} */}
-
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
+      )}
+      
+      {/* Public Routes - Always available */}
+      <Route path="/google-callback" element={<GoogleCallback />} />
       <Route path="/verify-email/:token" element={<VerifyEmail />} />
       <Route path="/auth/google/callback" element={<GoogleCallback />} />
       <Route path="/success-register" element={<SuccessPage />} />
-      
-      {/* Shop Invitation Routes */}
-      <Route path="/shop-invitation" element={<ShopInvitation />} />
-      <Route path="/shop-verification" element={<ShopVerification />} />
-      
-      {/* Protected Routes */}
-      <Route path="/ai-mode" element={<ProtectedRoute><AIMode /></ProtectedRoute>} />
-      <Route path="/Inventory" element={<ProtectedRoute><Inventory /></ProtectedRoute>} />
-      <Route path="/dashboard" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
-      <Route path="/create-store" element={<ProtectedRoute><CreateStore /></ProtectedRoute>} />
-      {/* <Route path="/store/:code" element={<ProtectedRoute><StoreDetail /></ProtectedRoute>} /> */}
-
-      <Route path="/wallet" element={<ProtectedRoute><Wallet /></ProtectedRoute>} />
-
-
     </Routes>
-      
   );
 }

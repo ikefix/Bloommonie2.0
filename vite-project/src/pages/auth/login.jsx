@@ -1,5 +1,5 @@
 import "./login.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEyeSlash } from "react-icons/fa";
 import { useAuthStore } from "../../../stores/authStore";
@@ -24,13 +24,6 @@ const Login = () => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
-
-  // Redirect if already authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/dashboard');
-    }
-  }, [isAuthenticated, navigate]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

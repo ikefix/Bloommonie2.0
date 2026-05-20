@@ -27,13 +27,6 @@ const ResetPassword = () => {
 
   const token = searchParams.get('token');
 
-  // Redirect if already authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/dashboard');
-    }
-  }, [isAuthenticated, navigate]);
-
   useEffect(() => {
     if (!token) {
       setResetStatus('error');

@@ -7,6 +7,7 @@ import SearchBar from '../../components/SearchBar';
 import Box from '../../components/Box';
 import WelcomeModal from '../../components/WelcomeModal';
 import ShowShop from './ShowShop';
+import CreateStoreAlert from '../../components/CreateStoreAlert';
 
 export default function UserDashboard() {
   const { user, logout, isAuthenticated } = useAuthStore();
@@ -76,6 +77,9 @@ export default function UserDashboard() {
     <>
       <SideNav />
       <SearchBar />
+      
+      {/* Show CreateStoreAlert only when user has no shops */}
+      {shops && shops.length === 0 && <CreateStoreAlert />}
       
       {/* Welcome Modal for users with no stores */}
       <WelcomeModal 
