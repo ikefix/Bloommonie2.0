@@ -1,0 +1,326 @@
+.settings-section {
+  padding: 20px;
+  background: #edf1f7;
+  min-height: 100vh;
+  margin-left: 230px;
+}
+
+/* TITLE */
+
+.settings-title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #12356f;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+
+.settings-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.settings-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  gap: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.settings-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blue {
+  background: #0b3470;
+}
+
+.navy {
+  background: #082d63;
+}
+
+.orange {
+  background: #f0a132;
+}
+
+.dark {
+  background: #37517e;
+}
+
+.red {
+  background: #cf0909;
+}
+
+.purple {
+  background: #7965d8;
+}
+
+.settings-text h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.settings-text p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.settings-text span {
+  font-weight: 600;
+}
+
+/* MAIN GRID */
+
+.settings-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+/* STORE SETTINGS */
+
+.store-settings-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.store-settings-card h2 {
+  font-size: 44px;
+  color: #12356f;
+  margin-bottom: 20px;
+}
+
+.store-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-row label {
+  width: 200px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.form-row input {
+  flex: 1;
+  height: 56px;
+  border: none;
+  background: #efeff4;
+  border-radius: 10px;
+  padding: 0 16px;
+  font-size: 17px;
+  outline: none;
+}
+
+.advanced-settings {
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.save-btn {
+  width: 220px;
+  height: 56px;
+  border: none;
+  background: #3d5ea5;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* RIGHT SIDE */
+
+.settings-right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* SALES OVERVIEW */
+
+.sales-overview-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.overview-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.overview-row h4 {
+  font-size: 18px;
+}
+
+.overview-row span {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.red-text {
+  color: #cf0909;
+}
+
+.last-seven {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.last-seven h3 {
+  font-size: 32px;
+}
+
+.last-seven span {
+  font-size: 32px;
+}
+
+.sales-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.sales-footer h1 {
+  font-size: 46px;
+}
+
+.sales-footer h2 {
+  font-size: 32px;
+}
+
+/* SECURITY */
+
+.security-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.security-card h2 {
+  margin-bottom: 30px;
+  font-size: 34px;
+}
+
+.security-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.security-row h4 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.security-row p {
+  color: #12356f;
+  font-weight: 600;
+}
+
+/* TOGGLE */
+
+.toggle-switch {
+  width: 52px;
+  height: 28px;
+  border-radius: 30px;
+  background: #ccc;
+  position: relative;
+}
+
+.toggle-circle {
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+}
+
+.toggle-switch.active {
+  background: green;
+}
+
+.toggle-switch.active .toggle-circle {
+  left: 26px;
+}
+
+/* TWO FACTOR */
+
+.two-factor-card {
+  margin-top: 16px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.two-factor-card h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.two-factor-card p {
+  font-size: 22px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1200px) {
+
+  .settings-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .settings-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+
+  .settings-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-row label {
+    width: 100%;
+  }
+
+  .settings-title {
+    font-size: 34px;
+  }
+
+  .store-settings-card h2 {
+    font-size: 30px;
+  }
+}

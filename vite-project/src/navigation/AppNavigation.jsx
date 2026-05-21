@@ -19,6 +19,8 @@ import SuccessPage from "../pages/auth/successPage";
 import Wallet from "../pages/admin/wallet";
 import { useAuthStore } from "../../stores/authStore";
 import Sales from "../pages/admin/Sales";
+import Pos from "../pages/admin/Pos";
+import Settings from "../pages/admin/Settings";
 
 export default function AppNavigation() {
   const { isAuthenticated } = useAuthStore();
@@ -52,6 +54,8 @@ export default function AppNavigation() {
           <Route path="/ai-mode" element={<AIMode />} />
           <Route path="/create-store" element={<CreateStore />} />
           <Route path="/Sales" element={<ProtectedRoute><Sales/></ProtectedRoute>}></Route>
+          <Route path="/Pos" element={<ProtectedRoute><Pos/></ProtectedRoute>}></Route>
+          <Route path="/Settings" element={<ProtectedRoute><Settings/></ProtectedRoute>}></Route>
         </>
       )}
       
