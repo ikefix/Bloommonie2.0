@@ -1,296 +1,328 @@
-/* MAIN SECTION */
 .wallet-section {
-   background-color: rgb(231, 231, 243);
-  min-height: 100vh;
   padding: 20px;
+  background: #eef1f7;
+  min-height: 100vh;
   margin-left: 230px;
-  width: calc(100vw - 230px);
-  box-sizing: border-box;
-  overflow-x: hidden;
 }
 
-.wallet-title {
-  /* font-size: 32px;
-  font-weight: 700; */
-  color: #1b2b52;
+.wallet-main-title {
+  font-size: 34px;
+  color: #0d2d63;
   margin-bottom: 20px;
+  font-weight: 700;
 }
 
-/* TOP ROW */
-.wallet-top-row {
+/* GRID */
+
+.wallet-top-grid {
   display: grid;
-  grid-template-columns: 2fr 1.35fr;
+  grid-template-columns: 2fr 1fr;
   gap: 20px;
-  align-items: start;
 }
 
-/* LEFT COLUMN */
-.wallet-left-column {
+/* LEFT */
+
+.wallet-left {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* TWO TOP CARDS */
+/* TOP CARDS */
+
 .wallet-info-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 20px;
 }
 
-/* SHARED CARD STYLE */
 .wallet-balance-card,
 .transaction-history-card,
-.quick-payments-card {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e2e5ef;
+.wallet-actions-wrapper,
+.transactions-card,
+.quick-payments-card,
+.wallet-overview-card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-/* BALANCE + HISTORY CARD INNER */
-.wallet-balance-card,
-.transaction-history-card {
-  min-height: 160px;
-  padding: 28px 24px;
-  display: flex;
-  align-items: center;
-}
-
-/* FLEX CONTENT */
 .wallet-card-content {
   display: flex;
   align-items: center;
   gap: 18px;
-  width: 100%;
 }
 
-/* ICON CIRCLES */
 .wallet-icon-circle,
-.quick-icon-circle {
-  width: 72px;
-  height: 72px;
+.wallet-icon-box {
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  color: white;
+  font-size: 28px;
 }
 
 .wallet-icon-box {
-  width: 72px;
-  height: 72px;
-  border: 3px solid #113c7c;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  border-radius: 12px;
 }
 
-/* COLORS */
 .green {
-  background: #38b44a;
-}
-
-.orange {
-  background: #f2a233;
-}
-
-.purple {
-  background: #7b63d3;
+  background: #2bb24c;
 }
 
 .blue {
-  background: #f4f8ff;
+  background: #0d2d63;
 }
 
-/* ICONS */
-.wallet-icon,
-.quick-icon {
-  font-size: 32px;
-  color: white;
+.orange {
+  background: #f4a62a;
 }
 
-.dark-blue {
-  color: #113c7c;
+.purple {
+  background: #7b5ce6;
 }
 
-/* TEXT */
 .wallet-text h3 {
   font-size: 20px;
-  font-weight: 700;
-  color: #2f6b3c;
-  margin: 0 0 8px 0;
+  margin-bottom: 8px;
+  color: #222;
 }
 
 .wallet-text h1 {
-  font-size: 28px;
-  font-weight: 800;
-  color: #2f6b3c;
-  margin: 0;
-  line-height: 1.2;
+  color: #2c7b3f;
+  font-size: 36px;
 }
 
-/* TRANSACTION CARD SPECIFIC */
-.transaction-history-card .wallet-text h3 {
-  color: #111827;
-  margin-bottom: 18px;
-}
-
-/* BUTTON */
 .download-btn {
-  background: #113c7c;
-  color: #fff;
+  background: #0d2d63;
+  color: white;
   border: none;
-  padding: 12px 32px;
+  padding: 12px 26px;
   border-radius: 10px;
-  font-size: 22px;
-  font-weight: 500;
   cursor: pointer;
-  min-width: 170px;
+  margin-top: 12px;
+  font-size: 15px;
 }
 
-.download-btn:hover {
-  opacity: 0.92;
+/* ACTIONS */
+
+.wallet-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.action-card {
+  flex: 1;
+  height: 140px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+}
+
+.add-money {
+  background: #11853a;
+}
+
+.transfer {
+  background: #0d2d63;
+}
+
+.withdraw {
+  background: #f4a62a;
+}
+
+.action-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.action-card p {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* TRANSACTIONS */
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.transaction-header button {
+  border: none;
+  background: transparent;
+  color: #0d2d63;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.table-head,
+.table-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.table-head {
+  font-weight: 700;
+  color: #0d2d63;
+}
+
+.name-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name-box svg {
+  font-size: 22px;
+}
+
+.green-text {
+  color: #17913f;
+  font-weight: 700;
+}
+
+.red-text {
+  color: #d42d2d;
+  font-weight: 700;
+}
+
+/* RIGHT SIDE */
+
+.wallet-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* QUICK PAYMENTS */
-.quick-payments-card {
-  padding: 0;
-  overflow: hidden;
-  min-height: 340px;
-}
 
 .quick-header {
-  padding: 24px 24px 18px 24px;
-  border-bottom: 1px solid #d8dbe5;
+  margin-bottom: 18px;
 }
 
-.quick-header h3 {
-  font-size: 22px;
-  font-weight: 700;
-  color: #1b2b52;
-  margin: 0;
-}
-
-/* EACH PAYMENT ITEM */
 .quick-payment-item {
-  padding: 20px 24px;
-  border-bottom: 1px solid #eceef4;
-}
-
-.quick-payment-item:last-child {
-  border-bottom: none;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 18px;
 }
 
 .quick-payment-left {
   display: flex;
-  align-items: center;
   gap: 18px;
 }
 
+.quick-icon-circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
 .quick-payment-text h4 {
-  font-size: 22px;
-  font-weight: 800;
-  color: #111827;
-  margin: 0 0 8px 0;
+  font-size: 28px;
+  margin-bottom: 6px;
 }
 
 .quick-payment-text p {
-  font-size: 17px;
-  color: #7c8394;
-  margin: 0 0 16px 0;
+  color: #888;
+  margin-bottom: 14px;
 }
 
-/* QUICK BUTTONS */
 .buy-btn,
 .bill-btn {
   border: none;
-  color: #fff;
-  padding: 12px 26px;
+  padding: 12px 24px;
   border-radius: 10px;
-  font-size: 20px;
-  font-weight: 600;
+  color: white;
   cursor: pointer;
-  min-width: 190px;
+  font-size: 16px;
 }
 
 .buy-btn {
-  background: #f2a233;
+  background: #f4a62a;
 }
 
 .bill-btn {
-  background: #7b63d3;
+  background: #7b5ce6;
 }
 
-.buy-btn:hover,
-.bill-btn:hover {
-  opacity: 0.92;
+/* OVERVIEW */
+
+.overview-header,
+.overview-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.graph-placeholder {
+  margin: 30px 0;
+}
+
+.graph-placeholder h2 {
+  color: #0d2d63;
+  margin-bottom: 20px;
+}
+
+.fake-chart {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(
+    to top,
+    rgba(66, 201, 108, 0.5),
+    rgba(66, 201, 108, 0.1)
+  );
+  border-radius: 12px;
 }
 
 /* RESPONSIVE */
-@media (max-width: 1200px) {
-  .wallet-top-row {
+
+@media (max-width: 1100px) {
+  .wallet-top-grid {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 768px) {
 
   .wallet-info-cards {
     grid-template-columns: 1fr;
   }
 
-  .quick-payments-card {
-    min-height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .wallet-section {
-    padding: 15px;
+  .wallet-actions {
+    flex-direction: column;
   }
 
-  .wallet-title {
-    font-size: 26px;
+  .table-head,
+  .table-row {
+    font-size: 12px;
   }
 
-  .wallet-balance-card,
-  .transaction-history-card {
-    padding: 22px 18px;
-    min-height: 140px;
-  }
-
-  .wallet-card-content,
-  .quick-payment-left {
-    gap: 14px;
-  }
-
-  .wallet-icon-circle,
-  .quick-icon-circle,
-  .wallet-icon-box {
-    width: 60px;
-    height: 60px;
-  }
-
-  .wallet-icon,
-  .quick-icon {
-    font-size: 26px;
-  }
-
-  .wallet-text h1 {
-    font-size: 22px;
-  }
-
-  .wallet-text h3,
-  .quick-payment-text h4,
-  .quick-header h3 {
-    font-size: 18px;
-  }
-
-  .download-btn,
-  .buy-btn,
-  .bill-btn {
-    font-size: 16px;
-    padding: 10px 18px;
-    min-width: 150px;
+  .quick-payment-text h4 {
+    font-size: 20px;
   }
 }

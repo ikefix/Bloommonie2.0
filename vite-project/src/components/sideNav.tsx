@@ -40,15 +40,16 @@ const SideNav = (): React.ReactElement => {
                 <div className="side-menu">
                     <ul>
                         <li><a href="/dashboard">Dashboard</a></li>
-                        <li><a href="">POS</a></li>
-                        <li><a href="/Inventory">Inventry</a></li>
+                        <li><a href="/Pos">POS</a></li>
+                        <li><a href="/Inventory">Inventory</a></li>
                         <li><a href="">Purchases</a></li>
-                        <li><a href="">Sales</a></li>
+                        <li><a href="/Sales">Sales</a></li>
                         <li><a href="">Expenses</a></li>
                         <li><a href="/wallet">Wallet</a></li>
                         <li><a href="">Internet</a></li>
                         <li><a href="">Bill Payment</a></li>
                         <li><a href="">Savings</a></li>
+                        <li><a href="/Settings">Settings</a></li>
                         <li><a href="" className="logout-link" onClick={handleLogout}>Logout</a></li>
                     </ul>
                 </div>
